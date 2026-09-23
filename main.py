@@ -43,7 +43,7 @@ def server_info() -> str:
         "tools": ["add", "random_number"],
         "author": "Your Name"
     }
-    return json.dump(info , indent=2)
+    return json.dumps(info , indent=2)
 
 
 # Start the server
