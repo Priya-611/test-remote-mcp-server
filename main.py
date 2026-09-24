@@ -76,7 +76,7 @@ async def list_expenses(start_date, end_date):  # Changed: added async
 
 @mcp.tool()
 async def summarize(start_date, end_date, category=None):  # Changed: added async
-    '''Summarize expenses by category within an inclusive date range.'''
+    '''Summarize the amount of expenses by category within an inclusive date range.'''
     try:
         async with aiosqlite.connect(DB_PATH) as c:  # Changed: added async
             query = """
@@ -98,7 +98,7 @@ async def summarize(start_date, end_date, category=None):  # Changed: added asyn
     except Exception as e:
         return {"status": "error", "message": f"Error summarizing expenses: {str(e)}"}
 
-@mcp.resource("expense:///categories", mime_type="application/json")  # Changed: expense:// → expense:///
+@mcp.resource("expense://categories", mime_type="application/json")
 def categories():
     try:
         # Provide default categories if file doesn't exist
